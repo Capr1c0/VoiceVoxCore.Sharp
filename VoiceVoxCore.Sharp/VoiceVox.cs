@@ -11,7 +11,7 @@ namespace VoiceVoxCore.Sharp
         /// <summary>
         /// 解放済みかどうか
         /// </summary>
-        private bool isDisaposesd = false;
+        private bool isDisposed = false;
 
         /// <summary>
         /// 初期化処理
@@ -72,7 +72,8 @@ namespace VoiceVoxCore.Sharp
 
         public void FreeWavData(VoiceVoxWavData wavData)
         {
-            VoiceVoxNative.FreeWav(wavData.ptr);
+            VoiceVoxNative.FreeWav(ref wavData.ptr);
+            wavData.ptr = IntPtr.Zero;
         }
 
         /// <summary>
@@ -80,12 +81,12 @@ namespace VoiceVoxCore.Sharp
         /// </summary>
         public void Dispose()
         {
-            if (this.isDisaposesd)
+            if (this.isDisposed)
             {
                 return;
             }
-            VoiceVoxNative.Finalize();
-            this.isDisaposesd = true;
+            VoiceVoxNative.Exit();
+            this.isDisposed = true;
         }
     }
 

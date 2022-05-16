@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoiceVoxCore.Sharp", "VoiceVoxCore.Sharp\VoiceVoxCore.Sharp.csproj", "{506D838E-DE75-4B42-90B5-64CC731475DC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{28EDD005-374C-496C-9136-351EF990A576} = {28EDD005-374C-496C-9136-351EF990A576}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp", "TestApp\TestApp.csproj", "{DDA4D2DB-7A92-4405-AB10-85190FB9FECF}"
 EndProject

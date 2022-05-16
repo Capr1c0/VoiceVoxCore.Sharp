@@ -57,7 +57,7 @@ namespace VoiceVoxCore.Sharp
          * CUDAを利用している場合これを実行しておかないと例外が起こることがある。
          */
         [DllImport("VoiceVox.Core.Wrapper")]
-        public static extern void Finalize();
+        public static extern void Exit();
 
         ///**
         // * @fn
@@ -172,7 +172,7 @@ namespace VoiceVoxCore.Sharp
          * @param wav 開放する音声データのポインタ
          */
         [DllImport("VoiceVox.Core.Wrapper")]
-        public static extern void FreeWav(IntPtr wav);
+        public static extern void FreeWav(ref IntPtr wav);
 
         ///**
         // * @fn
