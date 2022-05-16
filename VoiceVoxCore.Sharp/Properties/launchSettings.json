@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "VoiceVoxCore.Sharp": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    }
+  }
+}
