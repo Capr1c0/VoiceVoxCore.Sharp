@@ -21,7 +21,7 @@ namespace VoiceVoxCore.Sharp
         /// <param name="load_all_models">trueなら全てのモデルをロードする</param>
         public void Initialize(bool use_gpu, int cpu_num_threads = 0, bool load_all_models = true)
         {
-            
+            VoiceVoxNative.Exit();
             VoiceVoxNative.Initialize(use_gpu, cpu_num_threads , load_all_models);
             byte[] path = Encoding.UTF8.GetBytes($@"open_jtalk_dic_utf_8-1.11");
             GCHandle handle = GCHandle.Alloc(path, GCHandleType.Pinned);
@@ -52,7 +52,9 @@ namespace VoiceVoxCore.Sharp
         {
             IntPtr ptr = IntPtr.Zero;
             int size = 0;
+            GCHandle handle = GCHandle.Alloc(text , GCHandleType.Pinned);
             var result = VoiceVoxNative.GenerateTTS(text, speaker_id, ref size, ref ptr);
+            handle.Free();
             Console.WriteLine(result);
             Console.WriteLine($"Size = {size}");
             if (result != VoiceVoxNative.VoicevoxResultCode.VOICEVOX_RESULT_SUCCEED)

@@ -13,19 +13,10 @@ namespace TestApp
                 using (VoiceVox voicevox = new VoiceVox())
                 {
                     voicevox.Initialize(true);
-                    if (voicevox.TTSUnsafe("てすと", 0, out VoiceVoxWavData wav) == false)
-                    {
-                        Console.WriteLine("生成失敗");
-                        Console.ReadLine();
-                        return;
-                    }
-                    using (FileStream fs = new FileStream("Sample.wav", FileMode.Create))
-                    {
-                        fs.Write(wav.Data);
-                        fs.Flush();
-                    }
 
-                    voicevox.FreeWavData(wav);
+                    GenerateTTS(voicevox, "サンプル1");
+                    GenerateTTS(voicevox, "サンプル2");
+                    GenerateTTS(voicevox, "サンプル3");
                 }
             }
             catch (Exception ex)
@@ -35,6 +26,26 @@ namespace TestApp
             }
             Console.WriteLine("生成終了");
             Console.ReadLine();
+            return;
+        }
+
+        static void GenerateTTS(VoiceVox voiceVox, string text)
+        {
+            Console.WriteLine($"生成開始 {text}");
+            if (voiceVox.TTSUnsafe(text, 0, out VoiceVoxWavData wav) == false)
+            {
+                Console.WriteLine("生成失敗");
+                Console.ReadLine();
+                return;
+            }
+            using (FileStream fs = new FileStream("Sample.wav", FileMode.Create))
+            {
+                fs.Write(wav.Data);
+                fs.Flush();
+            }
+
+            voiceVox.FreeWavData(wav);
+            Console.WriteLine("生成終了");
             return;
         }
     }
