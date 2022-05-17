@@ -1,6 +1,5 @@
 #pragma once
 #include "core.h"
-
 #define VOICEVOX_WRAPPER extern "C" __declspec(dllexport)
 
 VOICEVOX_WRAPPER void Initialize(bool use_gpu, int cpu_num_threads, bool load_all_models);

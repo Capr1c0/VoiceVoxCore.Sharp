@@ -2,18 +2,10 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace VoiceVoxCore.Sharp
+namespace VoiceVoxCore.Sharp.v0_12_0_prev_3.Internal
 {
-    internal static class VoiceVoxNative
+    internal static class VoiceVoxNative_0120prev3
     {
-        public enum VoicevoxResultCode
-        {
-            // 成功
-            VOICEVOX_RESULT_SUCCEED = 0,
-            // OpenJTalk辞書がロードされていない
-            VOICEVOX_RESULT_NOT_LOADED_OPENJTALK_DICT = 1,
-        }
-
         /**
          * @fn
          * 初期化する
@@ -26,7 +18,7 @@ namespace VoiceVoxCore.Sharp
          * 何度も実行可能。use_gpuを変更して実行しなおすことも可能。
          * 最後に実行したuse_gpuに従って他の関数が実行される。
          */
-        [DllImport("VoiceVox.Core.Wrapper")]
+        [DllImport("VoiceVox.Core.Wapper_v0_12_0_prev3")]
         public static extern bool Initialize(bool use_gpu, int cpu_num_threads = 0, bool load_all_models = true);
 
         ///**
@@ -36,7 +28,7 @@ namespace VoiceVoxCore.Sharp
         // * @detail
         // * 必ずしも話者とモデルが1:1対応しているわけではない。
         // */
-        //[DllImport("VoiceVox.Core.Wrapper")]
+        //[DllImport("VoiceVox.Core.Wapper_v0_12_0_prev3")]
         //public static extern bool load_model(long speaker_id);
 
         ///**
@@ -45,7 +37,7 @@ namespace VoiceVoxCore.Sharp
         // * @param speaker_id 話者番号
         // * @return ロード済みならtrue、そうでないならfalse
         // */
-        //[DllImport("VoiceVox.Core.Wrapper")]
+        //[DllImport("VoiceVox.Core.Wapper_v0_12_0_prev3")]
         //public static extern bool is_model_loaded(long speaker_id);
 
         /**
@@ -56,7 +48,7 @@ namespace VoiceVoxCore.Sharp
          * 何度も実行可能。実行せずにexitしても大抵の場合問題ないが、
          * CUDAを利用している場合これを実行しておかないと例外が起こることがある。
          */
-        [DllImport("VoiceVox.Core.Wrapper")]
+        [DllImport("VoiceVox.Core.Wapper_v0_12_0_prev3")]
         public static extern void Exit();
 
         ///**
@@ -65,7 +57,7 @@ namespace VoiceVoxCore.Sharp
         // * @brief 話者名や話者IDのリストを取得する
         // * @return メタ情報が格納されたjson形式の文字列
         // */
-        //[DllImport("VoiceVox.Core.Wrapper")]
+        //[DllImport("VoiceVox.Core.Wapper_v0_12_0_prev3")]
         //public static extern byte[] metas();
 
         ///**
@@ -74,7 +66,7 @@ namespace VoiceVoxCore.Sharp
         // * @brief cpu, cudaのうち、使用可能なデバイス情報を取得する
         // * @return 各デバイスが使用可能かどうかをboolで格納したjson形式の文字列
         // */
-        //[DllImport("VoiceVox.Core.Wrapper")]
+        //[DllImport("VoiceVox.Core.Wapper_v0_12_0_prev3")]
         //public static extern byte[] supported_devices();
 
         ///**
@@ -86,7 +78,7 @@ namespace VoiceVoxCore.Sharp
         // * @param speaker_id 話者番号
         // * @return 音素ごとの長さ
         // */
-        //[DllImport("VoiceVox.Core.Wrapper")]
+        //[DllImport("VoiceVox.Core.Wapper_v0_12_0_prev3")]
         //public static extern bool yukarin_s_forward(long length, ref long phoneme_list, ref long speaker_id, ref float output);
 
         ///**
@@ -103,7 +95,7 @@ namespace VoiceVoxCore.Sharp
         // * @param speaker_id 話者番号
         // * @return モーラごとの音高
         // */
-        //[DllImport("VoiceVox.Core.Wrapper")]
+        //[DllImport("VoiceVox.Core.Wapper_v0_12_0_prev3")]
         //public static extern bool yukarin_sa_forward(long length, ref long vowel_phoneme_list, ref long consonant_phoneme_list,
         //                                          ref long start_accent_list, ref long end_accent_list,
         //                                          ref long start_accent_phrase_list, ref long end_accent_phrase_list,
@@ -120,7 +112,7 @@ namespace VoiceVoxCore.Sharp
         // * @param speaker_id 話者番号
         // * @return 音声波形
         // */
-        //[DllImport("VoiceVox.Core.Wrapper")]
+        //[DllImport("VoiceVox.Core.Wapper_v0_12_0_prev3")]
         //public static extern bool decode_forward(long length, long phoneme_size, ref float f0, ref float phoneme,
         //                                      ref long speaker_id, ref float output);
 
@@ -129,7 +121,7 @@ namespace VoiceVoxCore.Sharp
         // * 最後に発生したエラーのメッセージを取得する
         // * @return エラーメッセージ
         // */
-        //[DllImport("VoiceVox.Core.Wrapper")]
+        //[DllImport("VoiceVox.Core.Wapper_v0_12_0_prev3")]
         //public static extern byte[] last_error_message();
 
         /**
@@ -137,7 +129,7 @@ namespace VoiceVoxCore.Sharp
          * open jtalkの辞書を読み込む
          * @return 結果コード
          */
-        [DllImport("VoiceVox.Core.Wrapper")]
+        [DllImport("VoiceVox.Core.Wapper_v0_12_0_prev3")]
         public static extern VoicevoxResultCode LoadDictionary(byte[] dict_path);
 
         /**
@@ -149,7 +141,7 @@ namespace VoiceVoxCore.Sharp
          * @param output_wav 音声データを出力する先のポインタ。使用が終わったらvoicevox_wav_freeで開放する必要がある
          * @return 結果コード
          */
-        [DllImport("VoiceVox.Core.Wrapper")]
+        [DllImport("VoiceVox.Core.Wapper_v0_12_0_prev3")]
         public static extern VoicevoxResultCode GenerateTTS(byte[] text, long speaker_id, ref int output_binary_size,
                                                                  ref IntPtr output_wav);
 
@@ -162,7 +154,7 @@ namespace VoiceVoxCore.Sharp
         // * @param output_wav 音声データを出力する先のポインタ。使用が終わったらvoicevox_wav_freeで開放する必要がある
         // * @return 結果コード
         // */
-        //[DllImport("VoiceVox.Core.Wrapper")]
+        //[DllImport("VoiceVox.Core.Wapper_v0_12_0_prev3")]
         //public static extern VoicevoxResultCode voicevox_tts_from_kana(byte[] text, long speaker_id,
         //                                                    ref int output_binary_size, ref IntPtr output_wav);
 
@@ -171,7 +163,7 @@ namespace VoiceVoxCore.Sharp
          * voicevox_ttsで生成した音声データを開放する
          * @param wav 開放する音声データのポインタ
          */
-        [DllImport("VoiceVox.Core.Wrapper")]
+        [DllImport("VoiceVox.Core.Wapper_v0_12_0_prev3")]
         public static extern void FreeWav(ref IntPtr wav);
 
         ///**
@@ -179,7 +171,7 @@ namespace VoiceVoxCore.Sharp
         // * エラーで返ってきた結果コードをメッセージに変換する
         // * @return エラーメッセージ文字列
         // */
-        //[DllImport("VoiceVox.Core.Wrapper")]
+        //[DllImport("VoiceVox.Core.Wapper_v0_12_0_prev3")]
         //public static extern byte[] voicevox_error_result_to_message(VoicevoxResultCode result_code);
     }
 }

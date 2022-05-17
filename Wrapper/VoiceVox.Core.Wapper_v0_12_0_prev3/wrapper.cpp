@@ -20,7 +20,7 @@ VOICEVOX_WRAPPER void FreeWav(uint8_t** wav)
 	voicevox_wav_free(*wav);
 }
 
-VOICEVOX_WRAPPER VoicevoxResultCode LoadDictionary(const char* dict_path)
+VOICEVOX_WRAPPER VoicevoxResultCode LoadDictionary(const char* dict_path )
 {
 	return voicevox_load_openjtalk_dict(dict_path);
 }
