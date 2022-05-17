@@ -10,7 +10,7 @@ namespace VoiceVoxCore.Sharp
         /// <summary>
         /// コアのバージョン    
         /// </summary>
-        VoiceVoxVersion Version { get; }
+        VoiceVoxVersion CoreVersion { get; }
 
         /// <summary>
         /// 初期化処理

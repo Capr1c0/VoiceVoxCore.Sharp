@@ -9,6 +9,8 @@ namespace TestApp
         static void Main(string[] args)
         {
             IVoiceVoxSharp voiceVox = VoiceVox.CreateInstance();
+            Console.WriteLine($"使用しているコアのバージョン {voiceVox.CoreVersion}");
+
             voiceVox.Initialize(true);
 
             using (FileStream fs = new FileStream("Sample.wav", FileMode.Create))

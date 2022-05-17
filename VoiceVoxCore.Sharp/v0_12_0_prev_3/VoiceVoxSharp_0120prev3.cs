@@ -10,7 +10,7 @@ namespace VoiceVoxCore.Sharp.v0_12_0_prev_3
 {
     internal class VoiceVoxSharp_0120prev3 : IVoiceVoxSharp_0120prev3
     {
-        public VoiceVoxVersion Version => VoiceVoxVersion.v0_12_0_prev_3;
+        public VoiceVoxVersion CoreVersion => VoiceVoxVersion.v0_12_0_prev_3;
 
         public void Initialize(bool use_gpu, int cpu_num_threads = 0, bool load_all_models = true)
         {
