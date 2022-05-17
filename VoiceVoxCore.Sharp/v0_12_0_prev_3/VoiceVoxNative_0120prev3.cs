@@ -19,7 +19,7 @@ namespace VoiceVoxCore.Sharp.v0_12_0_prev_3.Internal
          * 最後に実行したuse_gpuに従って他の関数が実行される。
          */
         [DllImport("VoiceVox.Core.Wapper_v0_12_0_prev3")]
-        public static extern bool Initialize(bool use_gpu, int cpu_num_threads = 0, bool load_all_models = true);
+        public static extern bool Core_initialize(bool use_gpu, int cpu_num_threads = 0, bool load_all_models = true);
 
         ///**
         // * モデルをロードする
@@ -49,7 +49,7 @@ namespace VoiceVoxCore.Sharp.v0_12_0_prev_3.Internal
          * CUDAを利用している場合これを実行しておかないと例外が起こることがある。
          */
         [DllImport("VoiceVox.Core.Wapper_v0_12_0_prev3")]
-        public static extern void Exit();
+        public static extern void Core_finalize();
 
         ///**
         // * @fn
@@ -130,7 +130,7 @@ namespace VoiceVoxCore.Sharp.v0_12_0_prev_3.Internal
          * @return 結果コード
          */
         [DllImport("VoiceVox.Core.Wapper_v0_12_0_prev3")]
-        public static extern VoicevoxResultCode LoadDictionary(byte[] dict_path);
+        public static extern VoicevoxResultCode Core_voicevox_load_openjtalk_dict(byte[] dict_path);
 
         /**
          * @fn
@@ -142,7 +142,7 @@ namespace VoiceVoxCore.Sharp.v0_12_0_prev_3.Internal
          * @return 結果コード
          */
         [DllImport("VoiceVox.Core.Wapper_v0_12_0_prev3")]
-        public static extern VoicevoxResultCode GenerateTTS(byte[] text, long speaker_id, ref int output_binary_size,
+        public static extern VoicevoxResultCode Core_voicevox_tts(byte[] text, long speaker_id, ref int output_binary_size,
                                                                  ref IntPtr output_wav);
 
         ///**
@@ -164,7 +164,7 @@ namespace VoiceVoxCore.Sharp.v0_12_0_prev_3.Internal
          * @param wav 開放する音声データのポインタ
          */
         [DllImport("VoiceVox.Core.Wapper_v0_12_0_prev3")]
-        public static extern void FreeWav(ref IntPtr wav);
+        public static extern void Core_voicevox_wav_free(ref IntPtr wav);
 
         ///**
         // * @fn

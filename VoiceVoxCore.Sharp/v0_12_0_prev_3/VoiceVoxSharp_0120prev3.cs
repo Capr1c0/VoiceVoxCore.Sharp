@@ -14,10 +14,10 @@ namespace VoiceVoxCore.Sharp.v0_12_0_prev_3
 
         public void Initialize(bool use_gpu, int cpu_num_threads = 0, bool load_all_models = true)
         {
-            VoiceVoxNative_0120prev3.Initialize(use_gpu, cpu_num_threads, load_all_models);
+            VoiceVoxNative_0120prev3.Core_initialize(use_gpu, cpu_num_threads, load_all_models);
             byte[] path = Encoding.UTF8.GetBytes($@"open_jtalk_dic_utf_8-1.11");
             GCHandle handle = GCHandle.Alloc(path, GCHandleType.Pinned);
-            VoiceVoxNative_0120prev3.LoadDictionary(path);
+            VoiceVoxNative_0120prev3.Core_voicevox_load_openjtalk_dict(path);
             handle.Free();
         }
         public bool GenerateTTS(string text, Speaker speaker, Stream dstStream)
@@ -31,7 +31,7 @@ namespace VoiceVoxCore.Sharp.v0_12_0_prev_3
             IntPtr ptr = IntPtr.Zero;
             int size = 0;
             GCHandle handle = GCHandle.Alloc(text, GCHandleType.Pinned);
-            var result = VoiceVoxNative_0120prev3.GenerateTTS(text, (long)speaker, ref size, ref ptr);
+            var result = VoiceVoxNative_0120prev3.Core_voicevox_tts(text, (long)speaker, ref size, ref ptr);
             handle.Free();
             if (result != VoicevoxResultCode.VOICEVOX_RESULT_SUCCEED)
             {
@@ -49,7 +49,7 @@ namespace VoiceVoxCore.Sharp.v0_12_0_prev_3
                 var data = new ReadOnlySpan<byte>(ptr.ToPointer(), size);
                 dstStream.Write(data);
             }
-            VoiceVoxNative_0120prev3.FreeWav(ref ptr);
+            VoiceVoxNative_0120prev3.Core_voicevox_wav_free(ref ptr);
             return true;
         }
     }
